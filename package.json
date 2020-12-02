@@ -4,12 +4,13 @@
   "description": "Quique candidate assignment",
   "main": "index.js",
   "scripts": {
-  	"start": "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Quique",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "line-reader": "^0.4.0"
   }
 }
