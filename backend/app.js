@@ -1,10 +1,16 @@
 'use strict' 
 
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 
 //cargar rutas
 var reader_routes = require('./routes/reader');
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
 //configurar cabeceras http
 
 app.use((req, res, next) => {

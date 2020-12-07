@@ -8,7 +8,7 @@ function readDocument(req, res){
 	var petition = [];
 	var count = 0;
 
-	lineReader.eachLine('/home/mortixmix/enrique-assignment/resources/epa-http.txt', function(line) {
+	lineReader.eachLine('/home/mortixmix/enrique-assignment/backend/resources/epa-http.txt', function(line) {
 
 	    var array = line.split(" ");
 	    var request = arrayToJson(array);
@@ -18,11 +18,17 @@ function readDocument(req, res){
 	}, function (err) {
 	  if (err) throw err;
 
-	  fs.writeFile("/home/mortixmix/enrique-assignment/resources/data.json", JSON.stringify(petition), function(error){
+	  fs.writeFile("/home/mortixmix/enrique-assignment/backend/resources/data.json", JSON.stringify(petition), function(error){
 	  	if (err) throw err;
 	  	console.log ("complete!! Number of lines: "+count);
 	  })
 	});
+}
+
+function readJson(req, res){
+
+	var obj = JSON.parse(fs.readFileSync('./resources/data.json', 'utf8'));
+	return res.status(200).send(obj);
 }
 
 function arrayToJson(array){
@@ -51,5 +57,6 @@ function arrayToJson(array){
 
 
 module.exports = {
-	readDocument
+	readDocument,
+	readJson
 };
